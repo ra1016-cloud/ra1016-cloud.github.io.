@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit Adhikari | Rutgers Business School</title>
+  <style>
+    :root {
+      --rbs-red: #cc0033;
+      --text-dark: #1f2937;
+      --text-muted: #6b7280;
+      --bg-light: #f9fafb;
+      --badge-bg: #fde8e8;
+      --badge-text: #9b1c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 8%;
+      background-color: #ffffff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .brand span.rbs {
+      color: var(--rbs-red);
+      font-weight: 900;
+      border-right: 2px solid #e5e7eb;
+      padding-right: 0.5rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .btn-dark {
+      background-color: #0f172a;
+      color: #ffffff !important;
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
+      transition: background-color 0.2s;
+    }
+
+    .btn-dark:hover {
+      background-color: #1e293b;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      padding: 4rem 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Left Sidebar Profile */
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.25rem;
+    }
+
+    .profile-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .profile-card .school {
+      color: var(--rbs-red);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .profile-card .status {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Main Hero Content */
+    .hero-content {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 2.75rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-content p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 650px;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .btn-light {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .link-arrow {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 4rem 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="brand">
+      <span class="rbs">RBS</span>
+      <span>Rohit's Portfolio</span>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="mailto:a1016@scarletmail.rutgers.edu" class="btn-dark">Contact Me</a>
+    </nav>
+  </header>
+
+  <!-- Hero / Profile Section -->
+  <section class="hero" id="about">
+    <div class="profile-card">
+      <!-- Replace 'headshot.jpg' with your image file name in the repository -->
+      <img src="headshot.jpg" alt="Rohit Adhikari" class="profile-img">
+      <h3>Rohit Adhikari</h3>
+      <p class="school">Rutgers Business School</p>
+      <p class="status">Supply Chain Major</p>
+    </div>
+
+    <div class="hero-content">
+      <div class="badge">Currently: Pursuing B.S. in Supply Chain</div>
+      <h1>Optimizing logistics, operations, and supply chains at Rutgers.</h1>
+      <p>
+        Welcome! I'm Rohit Adhikari, an undergraduate student at RBS. I specialize in logistics, procurement, and operations focus. My goal is to build a career in supply chain analytics and operations planning—analyzing processes, identifying gaps, and implementing solutions that lower costs and improve reliability[cite: 2].
+      </p>
+      <div class="cta-group">
+        <a href="mailto:a1016@scarletmail.rutgers.edu" class="btn-light">Email Me</a>
+        <a href="https://www.linkedin.com/in/rohit-adhikari-230078256/" target="_blank" class="link-arrow">LinkedIn Profile &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects / Work Section -->
+  <section class="projects-section" id="projects">
+    <h2 class="section-title">Core Business Pillars: My Work</h2>
+    <p class="section-subtitle">
+      This grid highlights sample projects demonstrating my analytical approach, teamwork, and strategic thinking across supply chain functions[cite: 1, 2].
+    </p>
+  </section>
+
+</body>
+</html>
