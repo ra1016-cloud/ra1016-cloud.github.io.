@@ -29,11 +29,15 @@
 
     /* Navigation */
     header {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding: 1.5rem 8%;
       background-color: #ffffff;
+    }
+
+    header .nav-spacer {
+      /* balances the grid so .brand sits in the true center */
     }
 
     .brand {
@@ -54,6 +58,7 @@
     nav {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 2rem;
     }
 
@@ -74,6 +79,97 @@
 
     .btn-dark:hover {
       background-color: #1e293b;
+    }
+
+    /* Contact dropdown */
+    .contact-menu {
+      position: relative;
+    }
+
+    .contact-menu > span {
+      cursor: default;
+    }
+
+    .contact-panel {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      padding: 0.5rem;
+      min-width: 220px;
+      z-index: 10;
+      margin-top: 10px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(4px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      pointer-events: none;
+    }
+
+    /* invisible bridge so the panel doesn't close while moving the cursor from the trigger to it */
+    .contact-panel::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
+    }
+
+    .contact-menu:hover .contact-panel,
+    .contact-menu:focus-within .contact-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .contact-panel a {
+      display: flex;
+      flex-direction: column;
+      padding: 0.6rem 0.75rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+
+    .contact-panel a:hover {
+      background-color: var(--bg-light);
+    }
+
+    .contact-panel a .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-panel a .value {
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .nav-link-btn {
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .about-panel {
+      min-width: 280px;
+      padding: 1rem;
+      left: 0;
+      right: auto;
+    }
+
+    .about-text {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      line-height: 1.55;
+      font-weight: 500;
     }
 
     /* Hero Section */
@@ -179,38 +275,94 @@
       font-size: 0.9rem;
     }
 
-    /* Projects Section */
-    .projects-section {
-      padding: 4rem 8%;
-      max-width: 1200px;
-      margin: 0 auto;
+    /* Hover tooltips */
+    .tooltip {
+      position: relative;
     }
 
-    .section-title {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
+    .tooltip::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background-color: #0f172a;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 0.4rem 0.7rem;
+      border-radius: 6px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      pointer-events: none;
+      z-index: 10;
     }
 
-    .section-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 600px;
+    .tooltip::before {
+      content: "";
+      position: absolute;
+      bottom: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #0f172a;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease;
+      pointer-events: none;
+      z-index: 10;
     }
+
+    .tooltip:hover::after,
+    .tooltip:focus-visible::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .tooltip:hover::before,
+    .tooltip:focus-visible::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
   </style>
 </head>
 <body>
 
   <!-- Navigation Bar -->
   <header>
+    <span class="nav-spacer"></span>
     <div class="brand">
       <span class="rbs">RBS</span>
-      <span>Rohit's Portfolio</span>
+      <span>Rohit Adhikari</span>
     </div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="mailto:a1016@scarletmail.rutgers.edu" class="btn-dark">Contact Me</a>
+      <div class="contact-menu">
+        <span class="nav-link-btn" tabindex="0">About</span>
+        <div class="contact-panel about-panel">
+          <p class="about-text">
+            Currently a Supply Chain student here at Rutgers University, New Brunswick.
+            Expected to graduate in 2027. Logistics, Procurement, and Operations Focus |
+            Seeking Internship Opportunities
+          </p>
+        </div>
+      </div>
+      <div class="contact-menu">
+        <span class="btn-dark" tabindex="0">Contact Me</span>
+        <div class="contact-panel">
+          <a href="mailto:ra1016@scarletmail.rutgers.edu">
+            <span class="label">Email</span>
+            <span class="value">ra1016@scarletmail.rutgers.edu</span>
+          </a>
+          <a href="tel:9085386471">
+            <span class="label">Phone</span>
+            <span class="value">(908) 538-6471</span>
+          </a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -228,21 +380,13 @@
       <div class="badge">Currently: Pursuing B.S. in Supply Chain</div>
       <h1>Optimizing logistics, operations, and supply chains at Rutgers.</h1>
       <p>
-        Welcome! I'm Rohit Adhikari, an undergraduate student at RBS. I specialize in logistics, procurement, and operations focus. My goal is to build a career in supply chain analytics and operations planning—analyzing processes, identifying gaps, and implementing solutions that lower costs and improve reliability[cite: 2].
+        Welcome! I'm Rohit Adhikari, an undergraduate student at RBS. I specialize in logistics, procurement, and operations focus. My goal is to build a career in supply chain analytics and operations planning, analyzing processes, identifying gaps, and implementing solutions that lower costs and improve reliability.
       </p>
       <div class="cta-group">
-        <a href="mailto:a1016@scarletmail.rutgers.edu" class="btn-light">Email Me</a>
-        <a href="https://www.linkedin.com/in/rohit-adhikari-230078256/" target="_blank" class="link-arrow">LinkedIn Profile &rarr;</a>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ra1016@scarletmail.rutgers.edu" target="_blank" rel="noopener" class="btn-light tooltip" data-tooltip="ra1016@scarletmail.rutgers.edu">Email Me</a>
+        <a href="https://www.linkedin.com/in/rohit-adhikari-230078256/" target="_blank" class="link-arrow tooltip" data-tooltip="linkedin.com/in/rohit-adhikari-230078256">LinkedIn Profile &rarr;</a>
       </div>
     </div>
-  </section>
-
-  <!-- Projects / Work Section -->
-  <section class="projects-section" id="projects">
-    <h2 class="section-title">Core Business Pillars: My Work</h2>
-    <p class="section-subtitle">
-      This grid highlights sample projects demonstrating my analytical approach, teamwork, and strategic thinking across supply chain functions[cite: 1, 2].
-    </p>
   </section>
 
 </body>
